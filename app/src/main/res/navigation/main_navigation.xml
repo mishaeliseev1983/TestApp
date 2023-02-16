@@ -23,6 +23,7 @@
         <action
             android:id="@+id/action_secondScreenFragment_to_firstScreenFragment"
             app:destination="@id/firstScreenFragment"
-            app:popUpTo="@id/secondScreenFragment" />
+            app:popUpTo="@id/secondScreenFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

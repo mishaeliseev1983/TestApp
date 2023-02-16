@@ -21,18 +21,11 @@ class FirstScreenViewModel @Inject constructor(
     private val communications: FirstScreenCommunications
 ) : ViewModel(), ObserveFirstScreen, FetchProgress {
 
-    /*
-        val _liveData = MutableLiveData<Int>()
-        val liveData: LiveData<Int> = _liveData
-    */
+
     var progressStarted = false
     lateinit var jobProgress: Job
     var startValue: Double = 0.0
 
-    init {
-
-      //  startValue = 0.0
-    }
 
     override fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>) {
         communications.observeProgress(owner, observer)
@@ -51,13 +44,9 @@ class FirstScreenViewModel @Inject constructor(
                 var percent = startValue.roundToInt()
                 if ((ONE_HUNDRED_PERCENT - percent) < timeProgress)
                     percent = ONE_HUNDRED_PERCENT
-
                 communications.showProgress(percent)
-                //_liveData.postValue(percent)
             }
             communications.showProgress(ONE_HUNDRED_PERCENT)
-            //_liveData.postValue(ONE_HUNDRED_PERCENT)
-
         }
     }
 

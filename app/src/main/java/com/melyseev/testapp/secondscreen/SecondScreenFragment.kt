@@ -87,7 +87,10 @@ class SecondScreenFragment : Fragment() {
         progress1.progress = START_PERCENT_PROGRESS
         viewModel.observeProgress1(viewLifecycleOwner) {
             progress1.progress =  it
-            tvValueProgress1.text = "$it %"
+            tvValueProgress1.text = String.format(
+                getString(R.string.percent_show),
+                it.toString())
+
         }
 
 
@@ -98,7 +101,9 @@ class SecondScreenFragment : Fragment() {
         progress2.progress = START_PERCENT_PROGRESS
         viewModel.observeProgress2(viewLifecycleOwner) {
             progress2.progress = it
-            tvValueProgress2.text = "$it %"
+            tvValueProgress2.text = String.format(
+                getString(R.string.percent_show),
+                it.toString())
         }
 
 
@@ -137,6 +142,8 @@ class SecondScreenFragment : Fragment() {
         }
         viewModel.getRatings()
     }
+
+
 
 
 

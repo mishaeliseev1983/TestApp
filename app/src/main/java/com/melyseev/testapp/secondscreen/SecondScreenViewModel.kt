@@ -87,6 +87,8 @@ class SecondScreenViewModel @Inject constructor(
         }
     }
 
+
+
     fun getRatings() {
         viewModelScope.launch {
             try {

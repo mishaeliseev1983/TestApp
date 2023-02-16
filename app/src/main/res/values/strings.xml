@@ -19,4 +19,5 @@
     <string name="titleRaiting">Title raiting</string>
     <string name="imageRaiting">Image raiting</string>
     <string name="cantLoadData">Error when loading data</string>
+    <string name="percent_show">%s%%</string>
 </resources>
