@@ -47,13 +47,24 @@ class DrawView @JvmOverloads constructor(
 
 
         p.color = Color.RED
-        p.strokeWidth = 9f
+        p.strokeWidth = 15f
         canvas.drawCircle(startX + 500f, 75f, 20f, p)
         p.strokeWidth = 4f
         canvas.drawCircle(startX + 500f, 75f, 35f, p)
-
+        p.color = Color.RED
+        canvas.drawCircle(startX + 600f, 75f, 35f, p)
+        p.color = Color.GREEN
+        canvas.drawCircle(startX + 700f, 75f, 35f, p)
+        p.color = Color.YELLOW
+        canvas.drawCircle(startX + 800f, 75f, 35f, p)
+        p.color = Color.DKGRAY
+        canvas.drawCircle(startX + 900f, 75f, 35f, p)
+        p.color = Color.RED
+        canvas.drawCircle(startX + 1000f, 75f, 35f, p)
+        p.color = Color.RED
+        canvas.drawCircle(startX + 1100f, 75f, 35f, p)
         p.strokeWidth = 4f
-        p.textSize = 35f
+        p.textSize = 30f
         p.color = Color.BLUE
         p.isFakeBoldText = false
         val deltaX = 6
@@ -62,5 +73,14 @@ class DrawView @JvmOverloads constructor(
         canvas.drawText("C", startX + 300f - deltaX, 150f, p)
         canvas.drawText("D", startX + 400f - deltaX, 150f, p)
         canvas.drawText("E", startX + 500f - deltaX, 150f, p)
+        canvas.drawText("F", startX + 600f - deltaX, 150f, p)
+        canvas.drawText("G", startX + 600f - deltaX, 150f, p)
+        canvas.drawText("H", startX + 700f - deltaX, 150f, p)
+        canvas.drawText("I", startX + 800f - deltaX, 150f, p)
+        canvas.drawText("J", startX + 900f - deltaX, 150f, p)
+        canvas.drawText("K", startX + 1000f - deltaX, 150f, p)
+        canvas.drawText("L", startX + 1100f - deltaX, 150f, p)
+
+
     }
 }

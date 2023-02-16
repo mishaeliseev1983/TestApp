@@ -49,7 +49,7 @@ class SecondScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSecondScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,21 +59,22 @@ class SecondScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         daggerApplicationComponent.inject(this)
 
-        viewModel.observeDataClock(viewLifecycleOwner){
+
+        viewModel.observeDataClock(viewLifecycleOwner) {
             var minutes = 0
             var seconds = 0
-            var hours = it/3600
+            val hours = it / 3600
             val reminderHours = it % 3600
-            if(reminderHours != 0){
+            if (reminderHours != 0) {
                 minutes = reminderHours / 60
                 val reminderMinutes = reminderHours % 60
-                if(reminderMinutes != 0){
+                if (reminderMinutes != 0) {
                     seconds = reminderMinutes
                 }
             }
 
             binding.tvHours.text = String.format("%02d", hours)
-            binding.tvMinutes.text =  String.format("%02d", minutes)
+            binding.tvMinutes.text = String.format("%02d", minutes)
             binding.tvSeconds.text = String.format("%02d", seconds)
         }
         viewModel.startTimer()
@@ -85,7 +86,7 @@ class SecondScreenFragment : Fragment() {
         progress1.max = ONE_HUNDRED_PERCENT
         progress1.progress = START_PERCENT_PROGRESS
         viewModel.observeProgress1(viewLifecycleOwner) {
-            progress1.progress = it
+            progress1.progress =  it
             tvValueProgress1.text = "$it %"
         }
 
@@ -125,7 +126,7 @@ class SecondScreenFragment : Fragment() {
         }
 
         viewModel.observeDataError(viewLifecycleOwner) {
-            if(it) {
+            if (it) {
                 binding.progressBarRaitings.visibility = View.GONE
                 val text = R.string.cantLoadData
                 val duration = Toast.LENGTH_SHORT
@@ -136,5 +137,6 @@ class SecondScreenFragment : Fragment() {
         }
         viewModel.getRatings()
     }
+
 
 }

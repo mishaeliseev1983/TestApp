@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light">
+    android:background="@color/light"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_baseline_back_hand_24">
+    </ImageView>
 
-        <ImageView
-            android:src="@drawable/ic_baseline_back_hand_24"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/customAlert"
-            android:layout_gravity="center"
-            android:textSize="24sp"
-            android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/customAlert"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
 
-        <com.melyseev.testapp.secondscreen.DrawView
-            android:id="@+id/view"
-            android:background="@color/light"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="80dp" />
+    <com.melyseev.testapp.secondscreen.DrawView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@color/light" />
 
 
-        <Button
-            android:id="@+id/closeButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:textColor="#ffffff"
-            android:background="@drawable/mybutton"
-            android:text="@string/closeBtn" />
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/mybutton"
+        android:padding="10dp"
+        android:text="@string/closeBtn"
+        android:textColor="#ffffff" />
 
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
