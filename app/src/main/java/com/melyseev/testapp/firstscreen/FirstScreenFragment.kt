@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -49,7 +48,7 @@ class FirstScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFirstScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -66,7 +65,7 @@ class FirstScreenFragment : Fragment() {
         progress.max = ONE_HUNDRED_PERCENT
         progress.progress = START_PERCENT_PROGRESS
 
-        viewModel.observeProgress(viewLifecycleOwner){
+        viewModel.observeProgress(viewLifecycleOwner) {
             progress.progress = it
             tvValueProgress.text = "$it %"
         }
@@ -96,15 +95,14 @@ class FirstScreenFragment : Fragment() {
         }
 
 
-
         //Show custom view
         binding.showCustomAlert.setOnClickListener {
-            val builder = AlertDialog.Builder(requireActivity(),R.style.CustomAlertDialog)
+            val builder = AlertDialog.Builder(requireActivity(), R.style.CustomAlertDialog)
                 .create()
 
             val view =
-              layoutInflater.inflate(R.layout.custom_view_layout,null)
-            val  button = view.findViewById<Button>(R.id.closeButton)
+                layoutInflater.inflate(R.layout.custom_view_layout, null)
+            val button = view.findViewById<Button>(R.id.closeButton)
 
             builder.setView(view)
             button.setOnClickListener {
