@@ -1,0 +1,89 @@
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/black"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:tint="@color/yelllow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"></ImageView>
+        <ImageView
+            app:tint="@color/yelllow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"></ImageView>
+        <ImageView
+            app:tint="@color/yelllow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"></ImageView>
+        <ImageView
+            app:tint="@color/yelllow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"></ImageView>
+        <ImageView
+            app:tint="@color/yelllow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"></ImageView>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+        android:id="@+id/card_view"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_dark_background"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageRaiting"
+                android:layout_width="100dp"
+                android:contentDescription="@string/imageRaiting"
+                android:layout_height="100dp">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/titleRaiting"
+                android:contentDescription="@string/titleRaiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:maxLines="10"
+                android:layout_marginStart="10dp"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                tools:text="text 1">
+            </TextView>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

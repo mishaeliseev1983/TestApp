@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="start_progress">Start progress</string>
+    <string name="hide_show_anim">Hide/show animation</string>
+    <string name="stop_anim">Stop animation</string>
+    <string name="start_anim">Start animation</string>
+    <string name="goToSecondScreen">Go to second screen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Loading">Loading...</string>
+    <string name="randomValue1">Random value</string>
+    <string name="randomValue2">Random value 2</string>
+    <string name="show_custom_view">Show custom view</string>
+    <string name="lottieAnimation">Lottie Animation</string>
+    <string name="randomizeValues">Randomize values</string>
+    <string name="backScreen">To first screen</string>
+    <string name="customAlert">Custom Alert</string>
+    <string name="closeBtn">Close</string>
+    <string name="titleRaiting">Title raiting</string>
+    <string name="imageRaiting">Image raiting</string>
+    <string name="cantLoadData">Error when loading data</string>
+</resources>
