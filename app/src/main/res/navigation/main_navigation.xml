@@ -12,9 +12,7 @@
         tools:layout="@layout/fragment_first_screen" >
         <action
             android:id="@+id/action_firstScreenFragment_to_secondScreenFragment"
-            app:destination="@id/secondScreenFragment"
-            app:popUpTo="@id/firstScreenFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/secondScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondScreenFragment"
@@ -22,8 +20,6 @@
         android:label="SecondScreenFragment" >
         <action
             android:id="@+id/action_secondScreenFragment_to_firstScreenFragment"
-            app:destination="@id/firstScreenFragment"
-            app:popUpTo="@id/secondScreenFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/firstScreenFragment" />
     </fragment>
 </navigation>
