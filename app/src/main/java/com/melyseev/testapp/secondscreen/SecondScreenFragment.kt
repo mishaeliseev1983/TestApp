@@ -110,7 +110,7 @@ class SecondScreenFragment : Fragment() {
 
 
         binding.toFirstScreenFragment.setOnClickListener {
-            findNavController().navigate(R.id.action_secondScreenFragment_to_firstScreenFragment)
+            findNavController().popBackStack()
         }
 
 
@@ -137,6 +137,7 @@ class SecondScreenFragment : Fragment() {
         }
         viewModel.getRatings()
     }
+
 
 
 }

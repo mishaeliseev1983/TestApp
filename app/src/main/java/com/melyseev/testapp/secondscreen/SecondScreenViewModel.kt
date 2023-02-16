@@ -19,6 +19,12 @@ class SecondScreenViewModel @Inject constructor(
     private val communications: SecondScreenCommunications
 ) : ViewModel(), ObserveSecondScreen {
 
+    init {
+        communications.showProgress1(0)
+        communications.showProgress2(0)
+        communications.showDataError(false)
+    }
+
     private var clock: Int = SECONDS_IN_HOUR
     private var startedTimer = false
     fun startTimer() {
@@ -45,7 +51,7 @@ class SecondScreenViewModel @Inject constructor(
         val timeProgress = ONE_HUNDRED_PERCENT / durationProgress1
         viewModelScope.launch(Dispatchers.IO) {
             while (startValue1 < ONE_HUNDRED_PERCENT) {
-                delay(HALF_ONE_SECOND)
+                delay(ONE_SECOND)
                 startValue1 += timeProgress
                 var percent = startValue1.roundToInt()
                 if ((ONE_HUNDRED_PERCENT - percent) < timeProgress)
@@ -69,7 +75,7 @@ class SecondScreenViewModel @Inject constructor(
         val timeProgress = ONE_HUNDRED_PERCENT / durationProgress2
         viewModelScope.launch(Dispatchers.IO) {
             while (startValue2 < ONE_HUNDRED_PERCENT) {
-                delay(HALF_ONE_SECOND)
+                delay(ONE_SECOND)
                 startValue2 += timeProgress
                 var percent = startValue2.roundToInt()
                 if ((ONE_HUNDRED_PERCENT - percent) < timeProgress)
@@ -112,6 +118,11 @@ class SecondScreenViewModel @Inject constructor(
 
     override fun observeDataError(owner: LifecycleOwner, observer: Observer<Boolean>) {
         communications.observeDataError(owner, observer)
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
     }
 
 }

@@ -9,9 +9,11 @@ import dagger.Module
 @Module
 interface CommunicationsModule {
 
+    @ApplicationScope
     @Binds
     fun provideFirstScreenCommunications(param: FirstScreenCommunications.Base): FirstScreenCommunications
 
+    @ApplicationScope
     @Binds
     fun provideSecondScreenCommunications(param: SecondScreenCommunications.Base): SecondScreenCommunications
 

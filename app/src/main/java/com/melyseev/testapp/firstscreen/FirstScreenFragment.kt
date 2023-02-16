@@ -69,8 +69,6 @@ class FirstScreenFragment : Fragment() {
             progress.progress = it
             tvValueProgress.text = "$it %"
         }
-        viewModel.fetchProgress()
-
 
         //Lottie image
         val lottie = binding.lavMain
@@ -124,6 +122,7 @@ class FirstScreenFragment : Fragment() {
         super.onPause()
         viewModel.progressStarted = false
         viewModel.jobProgress.cancel()
+
     }
 
     override fun onResume() {
