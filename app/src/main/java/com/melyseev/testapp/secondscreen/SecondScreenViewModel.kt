@@ -122,9 +122,4 @@ class SecondScreenViewModel @Inject constructor(
         communications.observeDataError(owner, observer)
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-
 }

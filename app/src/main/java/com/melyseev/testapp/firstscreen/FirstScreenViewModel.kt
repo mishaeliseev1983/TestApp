@@ -49,11 +49,4 @@ class FirstScreenViewModel @Inject constructor(
             communications.showProgress(ONE_HUNDRED_PERCENT)
         }
     }
-
-    override fun onCleared() {
-        communications.showProgress(0)
-        startValue= 0.0
-        super.onCleared()
-    }
-
 }

@@ -17,9 +17,5 @@
     <fragment
         android:id="@+id/secondScreenFragment"
         android:name="com.melyseev.testapp.secondscreen.SecondScreenFragment"
-        android:label="SecondScreenFragment" >
-        <action
-            android:id="@+id/action_secondScreenFragment_to_firstScreenFragment"
-            app:destination="@id/firstScreenFragment" />
-    </fragment>
+        android:label="SecondScreenFragment" />
 </navigation>
