@@ -35,10 +35,6 @@ class FirstScreenFragment : Fragment() {
     private val binding: FragmentFirstScreenBinding
         get() = _binding ?: throw RuntimeException("FragmentFirstScreenBinding is null ")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -60,34 +56,30 @@ class FirstScreenFragment : Fragment() {
         daggerApplicationComponent.inject(this)
 
         //Progress
-        val progress = binding.progress
-        val tvValueProgress = binding.tvValuePercent
-        progress.max = ONE_HUNDRED_PERCENT
-        progress.progress = START_PERCENT_PROGRESS
+        binding.progress.max = ONE_HUNDRED_PERCENT
+        binding.progress.progress = START_PERCENT_PROGRESS
 
         viewModel.observeProgress(viewLifecycleOwner) {
-            progress.progress = it
-            tvValueProgress.text = "$it %"
+            binding.progress.progress = it
+            binding.tvValuePercent.text = String.format(
+                getString(R.string.percent_show),
+                it.toString())
         }
 
         //Lottie image
-        val lottie = binding.lavMain
         val staticImage = binding.staticImageView
-        val stopBtn = binding.stop
-        stopBtn.setOnClickListener {
-            lottie.pauseAnimation()
+        binding.stopLottie.setOnClickListener {
+            binding.lottie.pauseAnimation()
         }
-        val startBtn = binding.start
-        startBtn.setOnClickListener {
-            lottie.resumeAnimation()
+        binding.startLottie.setOnClickListener {
+            binding.lottie.resumeAnimation()
         }
-        val hideShowBtn = binding.hideShow
-        hideShowBtn.setOnClickListener {
-            if (lottie.isVisible) {
-                lottie.visibility = View.GONE
+        binding.hideShowLottie.setOnClickListener {
+            if (binding.lottie.isVisible) {
+                binding.lottie.visibility = View.GONE
                 staticImage.visibility = View.VISIBLE
             } else {
-                lottie.visibility = View.VISIBLE
+                binding.lottie.visibility = View.VISIBLE
                 staticImage.visibility = View.GONE
             }
         }
@@ -111,8 +103,7 @@ class FirstScreenFragment : Fragment() {
         }
 
         //Next screen button
-        val nextScreenBtn = binding.toSecondScreen
-        nextScreenBtn.setOnClickListener {
+        binding.btnSecondScreen.setOnClickListener {
             findNavController().navigate(R.id.action_firstScreenFragment_to_secondScreenFragment)
         }
 
@@ -120,15 +111,14 @@ class FirstScreenFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        viewModel.progressStarted = false
         viewModel.jobProgress.cancel()
-
+        binding.lottie.pauseAnimation()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.fetchProgress()
+        binding.lottie.resumeAnimation()
     }
-
 
 }

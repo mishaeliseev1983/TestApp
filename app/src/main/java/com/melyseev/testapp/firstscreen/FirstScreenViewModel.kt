@@ -22,19 +22,14 @@ class FirstScreenViewModel @Inject constructor(
 ) : ViewModel(), ObserveFirstScreen, FetchProgress {
 
 
-    var progressStarted = false
     lateinit var jobProgress: Job
     var startValue: Double = 0.0
-
 
     override fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>) {
         communications.observeProgress(owner, observer)
     }
 
     override fun fetchProgress() {
-        if (progressStarted) return
-        progressStarted = true
-
         val timeProgress = ONE_HUNDRED_PERCENT / DURATION_FIRST_PROGRESS
         jobProgress = viewModelScope.launch {
             while (startValue < ONE_HUNDRED_PERCENT) {

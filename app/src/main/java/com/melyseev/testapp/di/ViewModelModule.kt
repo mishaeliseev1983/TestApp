@@ -9,7 +9,6 @@ import dagger.multibindings.IntoMap
 
 @Module
 interface ViewModelModule {
-
     @IntoMap
     @ViewModelKey(FirstScreenViewModel::class)
     @Binds
@@ -19,5 +18,4 @@ interface ViewModelModule {
     @ViewModelKey(SecondScreenViewModel::class)
     @Binds
     fun bindSecondScreenViewModel(impl: SecondScreenViewModel): ViewModel
-
 }

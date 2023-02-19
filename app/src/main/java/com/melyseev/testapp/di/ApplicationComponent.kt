@@ -13,8 +13,7 @@ import dagger.Component
         ViewModelModule::class,
         RetrofitModule::class,
         CommunicationsModule::class,
-        ViewModelDependenciesModule::class,
-        AppModule::class]
+        ViewModelDependenciesModule::class]
 )
 interface ApplicationComponent {
 

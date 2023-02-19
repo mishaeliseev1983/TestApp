@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginEnd="10dp"
     android:layout_marginStart="10dp"
-    android:layout_marginBottom="10dp"
     android:layout_marginTop="50dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     tools:context=".firstscreen.FirstScreenFragment">
 
@@ -23,26 +23,26 @@
         android:id="@+id/tvValuePercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/progress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvValuePercent"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:progressDrawable="@drawable/gradient_progress"
-        tools:progress="60"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvValuePercent"
+        tools:progress="60" />
 
     <TextView
         android:id="@+id/tvLottieAnimation"
-        android:text="@string/lottieAnimation"
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/lottieAnimation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progress" />
 
@@ -50,13 +50,13 @@
         android:id="@+id/layoutLottie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLottieAnimation"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLottieAnimation">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lav_main"
+            android:id="@+id/lottie"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="7"
@@ -84,14 +84,14 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/start"
+                android:id="@+id/startLottie"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/start_anim"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"></Button>
 
             <Button
-                android:id="@+id/stop"
+                android:id="@+id/stopLottie"
                 android:layout_width="100dp"
 
                 android:layout_height="wrap_content"
@@ -99,9 +99,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
             <Button
-                android:id="@+id/hide_show"
+                android:id="@+id/hideShowLottie"
                 android:layout_width="100dp"
-
                 android:layout_height="wrap_content"
                 android:text="@string/hide_show_anim"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"></Button>
@@ -110,22 +109,22 @@
 
     <Button
         android:id="@+id/showCustomAlert"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutLottie"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/show_custom_view"></Button>
+        android:layout_marginTop="30dp"
+        android:text="@string/show_custom_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutLottie"></Button>
 
     <Button
-        android:id="@+id/toSecondScreen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnSecondScreen"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/goToSecondScreen">
+        android:text="@string/goToSecondScreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
     </Button>
 
