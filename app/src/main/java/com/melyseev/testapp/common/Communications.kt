@@ -3,7 +3,7 @@ package com.melyseev.testapp.common
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.melyseev.testapp.data.repository.DetailRaiting
+import com.melyseev.testapp.secondscreen.StateRaitings
 import javax.inject.Inject
 
 
@@ -46,12 +46,9 @@ interface Communications {
         class Base @Inject constructor() : IntCommunication, Post<Int>()
     }
 
-    interface DataRaitingsCommunication : Mutable<List<DetailRaiting>> {
-        class Base @Inject constructor() : DataRaitingsCommunication, Post<List<DetailRaiting>>()
+    interface StateRaitingsCommunication : Mutable<StateRaitings> {
+        class Base @Inject constructor() : StateRaitingsCommunication, Post<StateRaitings>()
     }
 
-    interface BooleanCommunication : Mutable<Boolean> {
-        class Base @Inject constructor() : BooleanCommunication, Post<Boolean>()
-    }
 
 }

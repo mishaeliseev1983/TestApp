@@ -8,7 +8,6 @@ import com.melyseev.testapp.common.MAX_SECONDS_IN_DAY
 import com.melyseev.testapp.common.ONE_HUNDRED_PERCENT
 import com.melyseev.testapp.common.ONE_SECOND
 import com.melyseev.testapp.common.SECONDS_IN_HOUR
-import com.melyseev.testapp.data.repository.DetailRaiting
 import com.melyseev.testapp.secondscreen.communications.ObserveSecondScreen
 import com.melyseev.testapp.secondscreen.communications.SecondScreenCommunications
 import kotlinx.coroutines.delay
@@ -28,7 +27,6 @@ class SecondScreenViewModel @Inject constructor(
     init {
         communications.showProgress1(0)
         communications.showProgress2(0)
-        communications.showDataError(false)
     }
 
 
@@ -49,7 +47,6 @@ class SecondScreenViewModel @Inject constructor(
     }
 
 
-
     fun goProgress2() {
         val durationProgress2 = (5..25).random()
         val timeProgress = ONE_HUNDRED_PERCENT / durationProgress2
@@ -67,7 +64,6 @@ class SecondScreenViewModel @Inject constructor(
     }
 
 
-
     override fun observeProgress1(owner: LifecycleOwner, observer: Observer<Int>) {
         communications.observeProgress1(owner, observer)
     }
@@ -80,15 +76,8 @@ class SecondScreenViewModel @Inject constructor(
         communications.observeDataClock(owner, observer)
     }
 
-    override fun observeListRaitings(
-        owner: LifecycleOwner,
-        observer: Observer<List<DetailRaiting>>
-    ) {
-        communications.observeListRaitings(owner, observer)
-    }
-
-    override fun observeDataError(owner: LifecycleOwner, observer: Observer<Boolean>) {
-        communications.observeDataError(owner, observer)
+    override fun observeStateRaitings(owner: LifecycleOwner, observer: Observer<StateRaitings>) {
+        communications.observeStateRaitings(owner, observer)
     }
 
     override fun fetchClock() {
@@ -105,9 +94,10 @@ class SecondScreenViewModel @Inject constructor(
     override fun fetchDataRaitings() {
         viewModelScope.launch {
             try {
-                communications.showDataRaitings(ratingsRepositoryBase.getRatings())
+                communications.showStateRaitings(StateRaitings.Progress)
+                communications.showStateRaitings(StateRaitings.Result(ratingsRepositoryBase.getRatings()))
             } catch (e: java.lang.IllegalStateException) {
-                communications.showDataError(true)
+                communications.showStateRaitings(StateRaitings.Error)
             }
         }
     }

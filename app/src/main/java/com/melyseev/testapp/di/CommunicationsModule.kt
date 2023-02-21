@@ -22,9 +22,5 @@ interface CommunicationsModule {
     fun provideIntCommunication(param: Communications.IntCommunication.Base): Communications.IntCommunication
 
     @Binds
-    fun provideBooleanCommunication(param: Communications.BooleanCommunication.Base): Communications.BooleanCommunication
-
-    @Binds
-    fun provideDataRaitingsCommunication(param: Communications.DataRaitingsCommunication.Base): Communications.DataRaitingsCommunication
-
+    fun provideStateRaitingsCommunication(param: Communications.StateRaitingsCommunication.Base): Communications.StateRaitingsCommunication
 }

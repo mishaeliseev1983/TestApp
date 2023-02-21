@@ -56,7 +56,7 @@ class SecondScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         daggerApplicationComponent.inject(this)
 
-        if(savedInstanceState==null){
+        if (savedInstanceState == null) {
             viewModel.fetchDataRaitings()
             viewModel.fetchClock()
         }
@@ -86,10 +86,11 @@ class SecondScreenFragment : Fragment() {
         progress1.max = ONE_HUNDRED_PERCENT
         progress1.progress = START_PERCENT_PROGRESS
         viewModel.observeProgress1(viewLifecycleOwner) {
-            progress1.progress =  it
+            progress1.progress = it
             tvValueProgress1.text = String.format(
                 getString(R.string.percent_show),
-                it.toString())
+                it.toString()
+            )
         }
 
 
@@ -102,7 +103,8 @@ class SecondScreenFragment : Fragment() {
             progress2.progress = it
             tvValueProgress2.text = String.format(
                 getString(R.string.percent_show),
-                it.toString())
+                it.toString()
+            )
         }
 
         binding.randomizeValues.setOnClickListener {
@@ -118,21 +120,25 @@ class SecondScreenFragment : Fragment() {
         binding.recyclerViewRaitings.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerViewRaitings.adapter = raitingsListAdapter
-        viewModel.observeListRaitings(viewLifecycleOwner) {
+
+
+        viewModel.observeStateRaitings(viewLifecycleOwner) {
             binding.progressBarRaitings.visibility = View.GONE
-            raitingsListAdapter.change(it)
-        }
+            when (it) {
+                StateRaitings.Progress -> binding.progressBarRaitings.visibility = View.VISIBLE
+                StateRaitings.Error -> {
+                    val text = R.string.cantLoadData
+                    val duration = Toast.LENGTH_SHORT
 
-        viewModel.observeDataError(viewLifecycleOwner) {
-            if (it) {
-                binding.progressBarRaitings.visibility = View.GONE
-                val text = R.string.cantLoadData
-                val duration = Toast.LENGTH_SHORT
-
-                val toast = Toast.makeText(requireContext(), text, duration)
-                toast.show()
+                    val toast = Toast.makeText(requireContext(), text, duration)
+                    toast.show()
+                }
+                is StateRaitings.Result -> {
+                    raitingsListAdapter.change(it.listData)
+                }
             }
         }
+
     }
 
 }
