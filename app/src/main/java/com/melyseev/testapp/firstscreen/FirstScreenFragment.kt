@@ -69,10 +69,12 @@ class FirstScreenFragment : Fragment() {
         //Lottie image
         val staticImage = binding.staticImageView
         binding.stopLottie.setOnClickListener {
-            binding.lottie.pauseAnimation()
+            if(binding.lottie.isVisible)
+                binding.lottie.pauseAnimation()
         }
         binding.startLottie.setOnClickListener {
-            binding.lottie.resumeAnimation()
+            if(binding.lottie.isVisible)
+                binding.lottie.resumeAnimation()
         }
         binding.hideShowLottie.setOnClickListener {
             if (binding.lottie.isVisible) {
@@ -112,13 +114,15 @@ class FirstScreenFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         viewModel.jobProgress.cancel()
-        binding.lottie.pauseAnimation()
+        if(binding.lottie.isVisible)
+            binding.lottie.pauseAnimation()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.fetchProgress()
-        binding.lottie.resumeAnimation()
+        if(binding.lottie.isVisible)
+            binding.lottie.resumeAnimation()
     }
 
 }
